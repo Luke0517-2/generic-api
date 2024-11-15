@@ -1,0 +1,83 @@
+server:
+  forward-headers-strategy: framework
+  port: 8062
+  servlet:
+    context-path: /api/generic/v1
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+spring:
+  datasource:
+    mysql:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.62.37:3306/db_28859051
+      username: myuser
+      password: mypassword
+      hikari:
+        connectionTimeout: 3000
+        idleTimeout: 600000
+        maxLifetime: 1800000
+    postgres:
+      driverClassName: org.postgresql.Driver
+      url: jdbc:postgresql://192.168.62.37:8080/otdb
+      username: dbowner
+      password: password
+    h2:
+      driverClassName: org.h2.Driver
+      url: 'jdbc:h2:file:~/generic-api/h2'
+      username: sa
+      password: password
+
+  jackson:
+    locale: zh_TW
+    time-zone: Asia/Taipei
+
+  servlet:
+    multipart:
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token/introspect
+          client-id: o-carbon-platform
+          client-secret: EUaENXrrH8e1X5hu1MJx1BWJfZFWYJ7f
+ocarbon.db:
+  type: postgres
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,httptrace,loggers
+        exclude: env,beans
+info:
+  git:
+    location: 'classpath:git.properties'
+
+springdoc:
+  api-docs:
+    enabled: true
+  #    path: /api-docs
+  swagger-ui:
+    enabled: true
+    #    path: /docs
+    use-root-path: true
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operationsSorter: method
+    tagsSorter: alpha
+    oauth:
+      clientId: o-carbon-platform
+      clientSecret: EUaENXrrH8e1X5hu1MJx1BWJfZFWYJ7f
+      use-basic-authentication-with-access-code-grant: true
+  cache:
+    disabled: false
+  oAuthFlow:
+    authorizationUrl: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/auth
+    tokenUrl: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token
+
+  
