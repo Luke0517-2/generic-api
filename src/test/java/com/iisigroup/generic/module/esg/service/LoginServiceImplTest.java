@@ -1,21 +1,14 @@
 package com.iisigroup.generic.module.esg.service;
 
-import com.iisigroup.generic.config.EsgPlatformProperties;
 import com.iisigroup.generic.config.MyCustomContextLoader;
 import com.iisigroup.generic.module.esg.dto.LoginInputDto;
 import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
 import com.iisigroup.generic.module.esg.service.impl.LoginServiceImpl;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 
 /**
  * ClassName:LoginServiceImplTest

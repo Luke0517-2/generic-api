@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 antMatcher("/swagger-ui/**"),
                                 antMatcher("/swagger-ui.html"),
                                 antMatcher("/actuator/**"),
-                                antMatcher("/auth/**")
+                                antMatcher("/auth/login")
                         ).permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2

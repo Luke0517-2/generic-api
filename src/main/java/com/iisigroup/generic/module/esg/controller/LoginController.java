@@ -1,9 +1,11 @@
 package com.iisigroup.generic.module.esg.controller;
 
 import com.iisigroup.generic.aop.Loggable;
+import com.iisigroup.generic.constant.Constants;
 import com.iisigroup.generic.dto.RespBodyDTO;
 import com.iisigroup.generic.module.esg.dto.LoginInputDto;
 import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
+import com.iisigroup.generic.module.esg.dto.LogoutInputDto;
 import com.iisigroup.generic.module.esg.service.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -36,10 +38,18 @@ public class LoginController {
 
     private final LoginService loginService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     @Loggable
     @Operation(description = "login")
     public RespBodyDTO<LoginOutputDto> login(@RequestBody @Valid LoginInputDto loginInputDto) {
         return getRespBodyDTO("esg", loginService.login(loginInputDto));
+    }
+
+    @PostMapping(value = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Loggable
+    @Operation(description = "logout")
+    public RespBodyDTO<String> logout(@RequestBody @Valid LogoutInputDto logoutInputDto) {
+        loginService.logout(logoutInputDto);
+        return getRespBodyDTO("esg", Constants.SUCCESS_MSG);
     }
 }
