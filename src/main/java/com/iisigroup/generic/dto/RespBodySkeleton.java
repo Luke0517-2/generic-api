@@ -35,7 +35,7 @@ public class RespBodySkeleton<T> {
     @NotNull
     private T data;
 
-    private PageInfo pageInfo;
-
-    private Map<String, PageInfo> pageInfoMap;
+//    private PageInfo pageInfo;
+//
+//    private Map<String, PageInfo> pageInfoMap;
 }

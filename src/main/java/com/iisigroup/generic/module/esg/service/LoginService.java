@@ -1,7 +1,8 @@
 package com.iisigroup.generic.module.esg.service;
 
-import java.io.IOException;
-import java.util.List;
+import com.iisigroup.generic.module.esg.dto.LoginInputDto;
+import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
+import com.iisigroup.generic.module.esg.dto.LogoutInputDto;
 
 /**
  * ClassName:LoginService
@@ -13,9 +14,6 @@ import java.util.List;
  */
 public interface LoginService {
 
-    String example(String input) throws IOException;
-
-    List<com.iisigroup.ocapi.entity.Roles> find64service();
-    List<com.iisigroup.generic.module.oc67.entity.Roles> find67service();
-
+    LoginOutputDto login(LoginInputDto user);
+    void logout(LogoutInputDto logoutInputDto);
 }

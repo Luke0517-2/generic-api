@@ -49,8 +49,6 @@ spring:
           introspection-uri: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token/introspect
           client-id: o-carbon-platform
           client-secret: EUaENXrrH8e1X5hu1MJx1BWJfZFWYJ7f
-ocarbon.db:
-  type: postgres
 
 management:
   endpoints:
@@ -83,5 +81,5 @@ springdoc:
   oAuthFlow:
     authorizationUrl: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/auth
     tokenUrl: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token
-
-  
+esg-platform:
+  url: http://192.168.62.37/api/esg/v1

@@ -1,14 +1,19 @@
 package com.iisigroup.generic.module.esg.service.impl;
 
-import com.iisigroup.generic.constant.ResponseCodeEnum;
-import com.iisigroup.generic.exception.ServiceException;
+import com.iisigroup.generic.config.EsgPlatformProperties;
+import com.iisigroup.generic.module.esg.dto.LoginInputDto;
+import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
+import com.iisigroup.generic.module.esg.dto.LogoutInputDto;
 import com.iisigroup.generic.module.esg.service.LoginService;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * ClassName:LoginServiceImpl
@@ -18,30 +23,47 @@ import java.util.List;
  * @Date:2024/11/14 下午 03:18
  * @Author:2208021
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService {
 
-    private final com.iisigroup.generic.module.oc67.repository.RolesRepository repository7;
-    private final com.iisigroup.generic.module.oc64.repository.RolesRepository repository4;
+    private final RestTemplate restTemplate;
+    private final EsgPlatformProperties esgPlatformProperties;
+    private final static String TOKEN_JSON_PATH = "$['access_token']";
+    private final static String REFRESH_TOKEN_JSON_PATH = "$['refresh_token']";
+    private final static String LOGIN_PATH = "/auth/verify";
+    private final static String LOGOUT_PATH = "/auth/logout";
 
     @Override
-    public String example(String input) throws IOException {
-        if ("123".equals(input))
-            throw new IOException("This is a simulated IOException");
-        if ("456".equals(input))
-            throw new ServiceException(ResponseCodeEnum.ERROR_CODE_1201);
-
-        return StringUtils.appendIfMissingIgnoreCase(input, " Luke");
+    public LoginOutputDto login(LoginInputDto user) {
+        log.info("Generic Api User {} login...", user.getUserName());
+        log.info("ESG-Service url : {}", esgPlatformProperties.getUrl() + LOGIN_PATH );
+        String responseStr = restTemplate.postForObject(esgPlatformProperties.getUrl() + LOGIN_PATH, apiRequestEntityTemplate(user), String.class);
+        return wrapperJwt(responseStr);
     }
 
     @Override
-    public List<com.iisigroup.ocapi.entity.Roles> find64service() {
-        return repository4.findAll();
+    public void logout(LogoutInputDto logoutInputDto) {
+
     }
 
-    @Override
-    public List<com.iisigroup.generic.module.oc67.entity.Roles> find67service() {
-        return repository7.findAll();
+    private HttpHeaders apiRequestHeadersTemplate() {
+        return new HttpHeaders() {{
+            set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+            set(HttpHeaders.ACCEPT, MediaType.ALL_VALUE);
+        }};
+    }
+
+    private <T> HttpEntity<T> apiRequestEntityTemplate(T payload) {
+        return new HttpEntity<>(payload, apiRequestHeadersTemplate());
+    }
+
+    private LoginOutputDto wrapperJwt(String responseStr) {
+        DocumentContext context = JsonPath.parse(responseStr);
+        return LoginOutputDto.builder()
+                .accessToken(context.read(TOKEN_JSON_PATH).toString())
+                .refreshToken(context.read(REFRESH_TOKEN_JSON_PATH).toString())
+                .build();
     }
 }

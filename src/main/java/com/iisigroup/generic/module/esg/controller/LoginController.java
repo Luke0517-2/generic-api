@@ -2,14 +2,19 @@ package com.iisigroup.generic.module.esg.controller;
 
 import com.iisigroup.generic.aop.Loggable;
 import com.iisigroup.generic.dto.RespBodyDTO;
+import com.iisigroup.generic.module.esg.dto.LoginInputDto;
+import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
 import com.iisigroup.generic.module.esg.service.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import static com.iisigroup.generic.dto.RespBodyDTO.getRespBodyDTO;
 
@@ -31,25 +36,10 @@ public class LoginController {
 
     private final LoginService loginService;
 
-//    @PostMapping("/test")
-//    @Loggable
-//    @Operation(description = "using test")
-//    public RespBodyDTO<String> test(@Valid @RequestBody LoginDto loginDto) throws IOException {
-//        return getRespBodyDTO("test", "hello " + loginService.example(loginDto.getUserName()));
-//    }
-
-    @GetMapping("/oc64")
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Loggable
-    @Operation(description = "using test")
-    public RespBodyDTO<List<com.iisigroup.ocapi.entity.Roles>> find64()  {
-        return getRespBodyDTO("646464", loginService.find64service());
+    @Operation(description = "login")
+    public RespBodyDTO<LoginOutputDto> login(@RequestBody @Valid LoginInputDto loginInputDto) {
+        return getRespBodyDTO("esg", loginService.login(loginInputDto));
     }
-
-    @GetMapping("/oc67")
-    @Loggable
-    @Operation(description = "using test")
-    public RespBodyDTO<List<com.iisigroup.generic.module.oc67.entity.Roles>> find67()  {
-        return getRespBodyDTO("676767", loginService.find67service());
-    }
-
 }

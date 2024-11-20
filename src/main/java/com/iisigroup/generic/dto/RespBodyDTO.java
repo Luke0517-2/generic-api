@@ -46,7 +46,7 @@ public class RespBodyDTO<T> {
                 .body(RespBodySkeleton.<T>builder()
                         .type(type)
                         .data(data)
-                        .pageInfo(pageInfo)
+//                        .pageInfo(pageInfo)
                         .responseCode(Constants.SUCCESS_CODE)
                         .responseMsg(Constants.SUCCESS_MSG).build())
                 .build();
@@ -66,8 +66,8 @@ public class RespBodyDTO<T> {
                 .body(RespBodySkeleton.<T>builder()
                         .type(type)
                         .data(data)
-                        .pageInfo(pageInfo)
-                        .pageInfoMap(pageInfoMap)
+//                        .pageInfo(pageInfo)
+//                        .pageInfoMap(pageInfoMap)
                         .responseCode(Constants.SUCCESS_CODE)
                         .responseMsg(Constants.SUCCESS_MSG).build())
                 .build();

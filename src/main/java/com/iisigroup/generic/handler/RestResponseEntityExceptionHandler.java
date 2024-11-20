@@ -1,14 +1,20 @@
 package com.iisigroup.generic.handler;
 
+import com.iisigroup.generic.constant.Constants;
 import com.iisigroup.generic.dto.RespBodyDTO;
 import com.iisigroup.generic.dto.RespBodySkeleton;
 import com.iisigroup.generic.exception.ServiceException;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import static com.iisigroup.generic.dto.RespBodyDTO.getErrRespBodyDTO;
+import java.util.stream.Collectors;
 
 /**
  * ClassName:RestResponseEntityExceptionHandler
@@ -22,8 +28,6 @@ import static com.iisigroup.generic.dto.RespBodyDTO.getErrRespBodyDTO;
 @RestControllerAdvice
 public class RestResponseEntityExceptionHandler {
 
-    private final static String SERVICE_EXCEPTION_TYPE = "ServiceException";
-
     @ExceptionHandler({Exception.class})
     public RespBodyDTO handleException(Exception ex, WebRequest request) {
 
@@ -33,20 +37,52 @@ public class RestResponseEntityExceptionHandler {
         if (ex instanceof ServiceException) {
             return handleServiceException((ServiceException) ex);
         }
+        if (ex instanceof MethodArgumentNotValidException) {
+            return handleMethodArgumentNotValidException((MethodArgumentNotValidException) ex);
+        }
+        if (ex instanceof BindException) {
+            return handleBindException((BindException) ex);
+        }
+        if (ex instanceof ConstraintViolationException) {
+            return handleConstraintViolationException((ConstraintViolationException) ex);
+        }
 
-        return getErrRespBodyDTO(ex.getClass().getName(), ex.getMessage());
+        return buildRespBodyDTO(ex.getClass().getName(), Constants.FAIL_CODE, ex.getMessage());
     }
 
     private RespBodyDTO handleServiceException(ServiceException e) {
-        if (e.getCode() != null) {
-            return RespBodyDTO.builder()
-                    .body(RespBodySkeleton.builder()
-                            .type(SERVICE_EXCEPTION_TYPE)
-                            .responseCode(e.getCode())
-                            .responseMsg(e.getMessage()).build())
-                    .build();
-        } else {
-            return getErrRespBodyDTO(SERVICE_EXCEPTION_TYPE, e.getMessage());
-        }
+        return buildRespBodyDTO(e.getClass().getSimpleName(), e.getCode() != null ? e.getCode() : Constants.FAIL_CODE, e.getMessage());
+    }
+
+    private RespBodyDTO handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return buildRespBodyDTO(e.getClass().getSimpleName(), e.getStatusCode().value(), e.getBindingResult()
+                .getAllErrors()
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(", ")));
+    }
+
+    private RespBodyDTO handleBindException(BindException e) {
+        return buildRespBodyDTO(e.getClass().getSimpleName(), Constants.FAIL_CODE, e.getBindingResult()
+                .getAllErrors()
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(", ")));
+    }
+
+    private RespBodyDTO handleConstraintViolationException(ConstraintViolationException e) {
+        return buildRespBodyDTO(e.getClass().getSimpleName(), Constants.FAIL_CODE, e.getConstraintViolations()
+                .stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.joining(", ")));
+    }
+
+    private RespBodyDTO buildRespBodyDTO(String type, Integer code, String errMsg) {
+        return RespBodyDTO.builder()
+                .body(RespBodySkeleton.builder()
+                        .type(type)
+                        .responseCode(code)
+                        .responseMsg(errMsg).build())
+                .build();
     }
 }
