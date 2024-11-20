@@ -3,7 +3,7 @@ package com.iisigroup.generic.module.esg.service;
 import com.iisigroup.generic.config.MyCustomContextLoader;
 import com.iisigroup.generic.module.esg.dto.LoginInputDto;
 import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
-import com.iisigroup.generic.module.esg.service.impl.LoginServiceImpl;
+import com.iisigroup.generic.module.esg.service.impl.AuthServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,10 @@ import org.springframework.test.context.ContextConfiguration;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(loader = MyCustomContextLoader.class)
-public class LoginServiceImplTest {
+public class AuthServiceImplTest {
 
     @Autowired
-    private LoginServiceImpl loginService;
+    private AuthServiceImpl loginService;
 
     @Test
     void testSendApi() {

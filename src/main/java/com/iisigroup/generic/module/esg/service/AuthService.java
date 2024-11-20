@@ -12,7 +12,7 @@ import com.iisigroup.generic.module.esg.dto.LogoutInputDto;
  * @Date:2024/11/14 下午 03:18
  * @Author:2208021
  */
-public interface LoginService {
+public interface AuthService {
 
     LoginOutputDto login(LoginInputDto user);
     void logout(LogoutInputDto logoutInputDto);

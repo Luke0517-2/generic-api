@@ -7,7 +7,7 @@ import com.iisigroup.generic.exception.ServiceException;
 import com.iisigroup.generic.module.esg.dto.LoginInputDto;
 import com.iisigroup.generic.module.esg.dto.LoginOutputDto;
 import com.iisigroup.generic.module.esg.dto.LogoutInputDto;
-import com.iisigroup.generic.module.esg.service.LoginService;
+import com.iisigroup.generic.module.esg.service.AuthService;
 import com.iisigroup.generic.utils.JWTInfoHelper;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
@@ -31,13 +31,13 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class LoginServiceImpl implements LoginService {
+public class AuthServiceImpl implements AuthService {
 
     private final RestTemplate restTemplate;
     private final EsgPlatformProperties esgPlatformProperties;
     private final static String TOKEN_JSON_PATH = "$['access_token']";
     private final static String REFRESH_TOKEN_JSON_PATH = "$['refresh_token']";
-    private final static String LOGIN_PATH = "/auth/verify";
+    private final static String LOGIN_PATH = "/auth/generic";
     private final static String LOGOUT_PATH = "/auth/logout";
     private final JWTInfoHelper jwtInfoHelper;
 
