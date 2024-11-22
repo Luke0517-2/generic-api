@@ -1,0 +1,24 @@
+[
+  {
+    "shippingItem": "shippingItem_3452XJG8",
+    "vehicleType": "t-truck",
+    "startLocation": "Los Angeles Port, CA, USA",
+    "endLocation": "Las Vegas, NV, USA",
+    "weight": 18500,
+    "weightUnit": "kg",
+    "distance": 435,
+    "distanceUnit": "km",
+    "tonKm": 8047.5
+  },
+  {
+    "shippingItem": "shippingItem_8934BKW9",
+    "vehicleType": "t-aviation-freight",
+    "startLocation": "Miami, FL, USA",
+    "endLocation": "Atlanta, GA, USA",
+    "weight": 12000,
+    "weightUnit": "kg",
+    "distance": 1050,
+    "distanceUnit": "km",
+    "tonKm": 12600
+  }
+]

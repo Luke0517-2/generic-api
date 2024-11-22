@@ -1,0 +1,16 @@
+[
+  {
+    "worker": 1,
+    "workDays": 22,
+    "workTime": 8,
+    "months": 8,
+    "totalWorkTime": 176
+  },
+  {
+    "worker": 2,
+    "workDays": 15,
+    "workTime": 7,
+    "months": 8,
+    "totalWorkTime": 105
+  }
+]

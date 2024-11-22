@@ -1,0 +1,24 @@
+[
+  {
+    "source": "t-taiwan-water-corporation",
+    "userNumber": "userNumber_87654321",
+    "billMonth": "2023-07",
+    "startDate": "2023-07-01",
+    "endDate": "2023-07-31",
+    "billDays": 31,
+    "usageDays": 30,
+    "usageDegrees": 450.25,
+    "usageUnit": "m3"
+  },
+  {
+    "source": "t-taipei-water-corporation",
+    "userNumber": "userNumber_12345678",
+    "billMonth": "2023-08",
+    "startDate": "2023-08-01",
+    "endDate": "2023-08-31",
+    "billDays": 31,
+    "usageDays": 29,
+    "usageDegrees": 382.05,
+    "usageUnit": "m3"
+  }
+]

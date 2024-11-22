@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Li Wei",
+    "carNumber": "A12345",
+    "amount": 1500,
+    "usageAmount": 45.5,
+    "usageUnit": "L",
+    "usageDate": "2024-04-01",
+    "bioEnergy": true
+  },
+  {
+    "name": "Zhang Hong",
+    "carNumber": "B67890",
+    "amount": 2000,
+    "usageAmount": 60.3,
+    "usageUnit": "L",
+    "usageDate": "2024-04-02",
+    "bioEnergy": false
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "UserA",
+    "usageAmount": 153.75,
+    "usageUnit": "kWh",
+    "bioEnergy": true
+  },
+  {
+    "name": "UserB",
+    "usageAmount": 299.23,
+    "usageUnit": "kWh",
+    "bioEnergy": false
+  }
+]

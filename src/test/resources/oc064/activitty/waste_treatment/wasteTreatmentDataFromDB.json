@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Environmental Waste Disposal",
+    "wasteDisposal": 0,
+    "usageAmount": 1500.53,
+    "usageUnit": "kilograms"
+  },
+  {
+    "name": "Organic Material Recycling",
+    "wasteDisposal": 1,
+    "usageAmount": 1200.75,
+    "usageUnit": "liters"
+  }
+]

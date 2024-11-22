@@ -1,0 +1,26 @@
+[
+  {
+    "source": "t-country",
+    "userNumber": "0912345678",
+    "billMonth": "2024-03",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-31",
+    "billDays": 31,
+    "usageDays": 30,
+    "usageDegrees": 150.5,
+    "usageUnit": "kWh",
+    "usagePercent": 87.3
+  },
+  {
+    "source": "t-other",
+    "userNumber": "0912345698",
+    "billMonth": "2024-04",
+    "startDate": "2024-04-01",
+    "endDate": "2024-04-30",
+    "billDays": 30,
+    "usageDays": 28,
+    "usageDegrees": 200.75,
+    "usageUnit": "kWh",
+    "usagePercent": 80.1
+  }
+]

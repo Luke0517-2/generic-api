@@ -52,9 +52,15 @@ public enum ResponseCodeEnum {
     // esg-platform error
     ERROR_CODE_1301(1301, "ESG platform Unavailable"),
     ERROR_CODE_1302(1302, "ESG platform Internal Server Error"),
+
+    //excel error
+    ERROR_CODE_1401(1401,"Mismatch type"),
+    ERROR_CODE_1402(1402,"Missing field"),
+
+
+    ERROR_CODE_9999(9999, "Unknown Error")
+
     ;
-
-
     private final int code;
     private final String defaultMessage;
 
