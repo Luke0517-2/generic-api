@@ -1,0 +1,24 @@
+[
+  {
+    "shippingItem": "shippingItem_1A234B",
+    "vehicleType": "t-international-shipping",
+    "startLocation": "Taipei Main Station",
+    "endLocation": "Taoyuan International Airport",
+    "weight": 1500.01,
+    "weightUnit": "kg",
+    "distance": 45.02,
+    "distanceUnit": "km",
+    "tonKm": 67.5
+  },
+  {
+    "shippingItem": "shippingItem_2B345C",
+    "vehicleType": "t-temperature-truck",
+    "startLocation": "Kaohsiung Harbor",
+    "endLocation": "Tainan Station",
+    "weight": 2000,
+    "weightUnit": "kg",
+    "distance": 55,
+    "distanceUnit": "km",
+    "tonKm": 110
+  }
+]

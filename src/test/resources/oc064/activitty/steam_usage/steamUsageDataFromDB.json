@@ -1,0 +1,16 @@
+[
+  {
+    "source": "source_1a2b3c4d5e6f",
+    "userNumber": "1234567890",
+    "billMonth": "2023-03",
+    "usageAmount": 350.45,
+    "usageUnit": "kWh"
+  },
+  {
+    "source": "source_7e8f9g0h1i2j",
+    "userNumber": "0987654321",
+    "billMonth": "2023-03",
+    "usageAmount": 275.6,
+    "usageUnit": "kWh"
+  }
+]

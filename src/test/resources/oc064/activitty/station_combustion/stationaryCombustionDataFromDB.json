@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Taipei No.1 Pump",
+    "usageAmount": 12345.67,
+    "usageUnit": "m³",
+    "bioEnergy": true
+  },
+  {
+    "name": "Kaohsiung No.2 Valve",
+    "usageAmount": 23456.78,
+    "usageUnit": "m³",
+    "bioEnergy": false
+  }
+]

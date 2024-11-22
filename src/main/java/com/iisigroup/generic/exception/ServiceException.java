@@ -2,7 +2,9 @@ package com.iisigroup.generic.exception;
 
 
 import com.iisigroup.generic.constant.ResponseCodeEnum;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 
@@ -10,6 +12,9 @@ import java.io.Serial;
  * 通用異常
  * 若無合適的異常類型, 則使用此類型, 且可自行定義錯誤碼
  */
+
+@AllArgsConstructor
+@NoArgsConstructor
 public final class ServiceException extends RuntimeException {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -22,9 +27,6 @@ public final class ServiceException extends RuntimeException {
     @Getter
     private String detailMessage;
 
-    public ServiceException() {
-    }
-
     public ServiceException(ResponseCodeEnum responseCodeEnum) {
         this.code = responseCodeEnum.getCode();
         this.message = responseCodeEnum.getDefaultMessage();
@@ -33,6 +35,10 @@ public final class ServiceException extends RuntimeException {
     public ServiceException(ResponseCodeEnum responseCodeEnum, String extraMessage) {
         this.code = responseCodeEnum.getCode();
         this.message = responseCodeEnum.getDefaultMessage() + " : " + extraMessage;
+    }
+
+    public ServiceException(String message) {
+        this.message = message;
     }
 
     @Override

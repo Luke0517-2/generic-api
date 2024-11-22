@@ -21,6 +21,7 @@
 		<freemarker.version>2.3.32</freemarker.version>
 		<oc64-entity.version>20240924.1-SNAPSHOT</oc64-entity.version>
 		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
+		<transmittable-thread-local.version>2.14.3</transmittable-thread-local.version>
 	</properties>
 
 	<dependencies>
@@ -162,6 +163,13 @@
 			<version>4.1.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>transmittable-thread-local</artifactId>
+			<version>${transmittable-thread-local.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

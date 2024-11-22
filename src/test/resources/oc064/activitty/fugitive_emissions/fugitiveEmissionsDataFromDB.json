@@ -1,0 +1,20 @@
+[
+  {
+    "name": "ValveA",
+    "equipment": 123456,
+    "intensityAmount": 120.52,
+    "months": 6,
+    "leakageRate": 0.005,
+    "leakageAmount": 60.25,
+    "leakageUnit": "kg"
+  },
+  {
+    "name": "PumpB",
+    "equipment": 654321,
+    "intensityAmount": 230,
+    "months": 12,
+    "leakageRate": 0.007,
+    "leakageAmount": 161,
+    "leakageUnit": "kg"
+  }
+]

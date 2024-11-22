@@ -1,0 +1,22 @@
+[
+  {
+    "vehicleType": "t-high-speed-rail",
+    "name": "名稱1",
+    "startLocation": "t-location-nangang",
+    "endLocation": "t-location-taipei",
+    "personNumber": 10,
+    "distance": 45,
+    "distanceUnit": "km",
+    "manKm": 450
+  },
+  {
+    "vehicleType": "t-motorcycle",
+    "name": "名稱2",
+    "startLocation": "t-location-nangang",
+    "endLocation": "t-location-taipei",
+    "personNumber": 20,
+    "distance": 50,
+    "distanceUnit": "km",
+    "manKm": 1000
+  }
+]

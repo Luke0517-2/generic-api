@@ -1,0 +1,22 @@
+[
+  {
+    "vehicleType": "t-private-bus",
+    "name": "name1",
+    "startLocation": "南港",
+    "endLocation": "台北",
+    "personNumber": 15,
+    "distance": 40.5,
+    "distanceUnit": "km",
+    "manKm": 607.5
+  },
+  {
+    "vehicleType": "t-national-shipping",
+    "name": "name2",
+    "startLocation": "Kaohsiung Station",
+    "endLocation": "Tainan Station",
+    "personNumber": 25,
+    "distance": 45.2,
+    "distanceUnit": "km",
+    "manKm": 1125
+  }
+]
