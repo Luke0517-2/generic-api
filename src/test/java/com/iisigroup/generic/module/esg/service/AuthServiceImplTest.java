@@ -27,7 +27,7 @@ public class AuthServiceImplTest {
 
     @Test
     void testSendApi() {
-        LoginInputDto jmtest015 = LoginInputDto.builder().userName("jmtest015").passwd("iis!ESG064").build();
+        LoginInputDto jmtest015 = LoginInputDto.builder().userName("jmtest087").passwd("iis!ESG064").build();
         LoginOutputDto jwt = loginService.login(jmtest015);
         Assertions.assertNotNull(jwt.getAccessToken());
         Assertions.assertNotNull(jwt.getRefreshToken());
