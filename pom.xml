@@ -21,7 +21,7 @@
 		<freemarker.version>2.3.32</freemarker.version>
 		<oc64-entity.version>20240924.1-SNAPSHOT</oc64-entity.version>
 		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
-		<transmittable-thread-local.version>2.14.3</transmittable-thread-local.version>
+		<spring-boot-starter-multitenant-oauth2.version>0.0.1-SNAPSHOT</spring-boot-starter-multitenant-oauth2.version>
 	</properties>
 
 	<dependencies>
@@ -110,6 +110,12 @@
 			<version>${oc64-entity.version}</version>
 		</dependency>
 
+		<!-- 多租戶 -->
+		<dependency>
+			<groupId>com.iisigroup</groupId>
+			<artifactId>multitenant-oauth2-spring-boot-starter</artifactId>
+			<version>${spring-boot-starter-multitenant-oauth2.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -162,12 +168,6 @@
 			<artifactId>spring-cloud-contract-wiremock</artifactId>
 			<version>4.1.2</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>transmittable-thread-local</artifactId>
-			<version>${transmittable-thread-local.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -1,9 +1,9 @@
 package com.iisigroup.generic.module.oc64.service.impl;
 
 
-import com.iisigroup.generic.config.SecurityContextHolder;
 import com.iisigroup.generic.exception.ServiceException;
 import com.iisigroup.generic.module.oc64.repository.ChangeHistoriesRepository;
+import com.iisigroup.generic.utils.JWTInfoHelper;
 import com.iisigroup.generic.utils.StringUtils;
 import com.iisigroup.ocapi.entity.ChangeHistories;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +23,8 @@ public class AsyncChangeHistoriesService {
 
     @Autowired
     private ChangeHistoriesRepository changeHistoriesRepository;
+    @Autowired
+    private JWTInfoHelper jwtInfoHelper;
 
     private static final List<String> FILTERED_FIELD = Arrays.asList("id", "createdAt", "createdBy", "updatedAt", "updatedBy", "passwordHash");
 
@@ -51,8 +53,8 @@ public class AsyncChangeHistoriesService {
             }
 
             ChangeHistories changeHistories = new ChangeHistories();
-            changeHistories.setCompanyId(SecurityContextHolder.getCompanyId());
-            changeHistories.setUserId(SecurityContextHolder.getUsernameByJwt());
+            changeHistories.setCompanyId(jwtInfoHelper.getCompanyIdByJwt());
+            changeHistories.setUserId(jwtInfoHelper.getUsernameByJwt());
             changeHistories.setTableName(StringUtils.toUnderScoreCase(newBean.getClass().getSimpleName()));
             changeHistories.setFieldName(StringUtils.toUnderScoreCase(fieldName));
             changeHistories.setSourceId(beanId);

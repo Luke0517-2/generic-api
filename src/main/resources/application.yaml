@@ -11,7 +11,7 @@ spring:
   datasource:
     mysql:
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.62.37:3306/db_28859051
+      url: jdbc:mysql://localhost:3306/db_28859051
       username: myuser
       password: mypassword
       hikari:
@@ -45,6 +45,8 @@ spring:
   security:
     oauth2:
       resourceserver:
+        multitenant:
+          enabled: true
         opaque-token:
           introspection-uri: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token/introspect
           client-id: o-carbon-platform
@@ -87,3 +89,19 @@ esg-platform:
 file:
   upload-dir: D:\ocarbon-file
   upload-template-dir: D:\ocarbon-template
+
+multitenancy:
+  defaultSchema: db_28859051
+  tenants:
+    - identifier: iisi01
+      enabled: true
+      schema: iisi01
+    - identifier: iisi02
+      enabled: true
+      schema: iisi02
+    - identifier: iisi03
+      enabled: true
+      schema: iisi03
+    - identifier: default
+      enabled: true
+      schema: db_28859051

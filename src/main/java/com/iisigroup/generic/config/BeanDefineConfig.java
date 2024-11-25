@@ -1,6 +1,7 @@
 package com.iisigroup.generic.config;
 
 import com.iisigroup.generic.utils.JWTInfoHelper;
+import com.iisigroup.multitenant.data.hibernate.TenantIdentifierResolver;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -52,6 +53,11 @@ public class BeanDefineConfig {
         taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy()); // 當queue以滿且thread數達到max時的拒絕策略
         taskExecutor.initialize();
         return taskExecutor;
+    }
+
+    @Bean
+    public TenantIdentifierResolver tenantIdentifierResolver() {
+        return new TenantIdentifierResolver();
     }
 
 }
