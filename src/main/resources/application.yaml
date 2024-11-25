@@ -11,7 +11,7 @@ spring:
   datasource:
     mysql:
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db_28859051
+      url: jdbc:mysql://192.168.62.37:3306/db_28859051
       username: myuser
       password: mypassword
       hikari:
@@ -83,3 +83,7 @@ springdoc:
     tokenUrl: http://192.168.62.37/auth/realms/28859052/protocol/openid-connect/token
 esg-platform:
   url: http://192.168.62.37/api/esg/v1
+
+file:
+  upload-dir: D:\ocarbon-file
+  upload-template-dir: D:\ocarbon-template
